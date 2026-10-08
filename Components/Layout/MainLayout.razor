@@ -1,0 +1,43 @@
+﻿
+@inherits LayoutComponentBase
+
+<div class="site-shell @(isDark ? "dark-mode" : "")">
+
+    <header class="site-header">
+
+        <a class="logo" href="/">
+            J<span>.</span>
+        </a>
+
+        <div class="header-actions">
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="/#home">Home</a>
+                <a href="/#about">About</a>
+            </nav>
+
+            <button class="theme-toggle"
+                    type="button"
+                    @onclick="ToggleTheme"
+                    aria-label="@(isDark ? "Activate light mode" : "Activate dark mode")">
+
+                @(isDark ? "☀" : "☾")
+
+            </button>
+
+        </div>
+
+    </header>
+
+    @Body
+
+</div>
+
+@code {
+    private bool isDark = false;
+
+    private void ToggleTheme()
+    {
+        isDark = !isDark;
+    }
+}

@@ -1,0 +1,147 @@
+
+/* =========================
+   LIGHT MODE (DEFAULT)
+========================= */
+
+.site-shell {
+    --bg: #F6F4EF;
+    --text: #191B29;
+    --accent: #6255AB;
+    --muted: #646875;
+    --line: #E3DFD8;
+
+    --button-bg: #191B29;
+    --button-text: #FFFFFF;
+
+    --avatar-start: #EAE5F6;
+    --avatar-end: #D9D3EC;
+
+    background-color: var(--bg);
+    color: var(--text);
+
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.site-shell.dark-mode {
+    --bg: #151722;
+    --text: #F6F4EF;
+    --accent: #ACA3F6;
+    --muted: #A5A7B9;
+    --line: #333646;
+
+    --button-bg: #ACA3F6;
+    --button-text: #151722;
+
+    --avatar-start: #29263F;
+    --avatar-end: #1D2033;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 24px 6%;
+    border-bottom: 1px solid var(--line);
+}
+
+/* Logo */
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+/* Header actions */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Navigation links */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* =========================
+   THEME TOGGLE BUTTON
+========================= */
+
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    background: transparent;
+    color: var(--text);
+
+    border: 1px solid var(--line);
+    border-radius: 50%;
+
+    cursor: pointer;
+    font-size: 22px;
+
+    transition: background-color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--line);
+    transform: rotate(15deg);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+    .site-header {
+        padding: 20px 5%;
+    }
+
+    .header-actions {
+        gap: 16px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+}

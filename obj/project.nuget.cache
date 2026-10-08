@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PZfL6mYkRyM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ender\\OneDrive\\Dokumenter\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ender\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.11\\microsoft.aspnetcore.app.internal.assets.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

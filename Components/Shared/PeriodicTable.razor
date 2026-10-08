@@ -1,0 +1,64 @@
+
+<section class="skills" id="skills">
+
+    <p class="skills-label">02 / TECH STACK</p>
+    <h2>The periodic table of my stack.</h2>
+
+    <div class="skill-grid">
+
+        @foreach (var skill in skills)
+        {
+            <button class="skill-tile"
+                    type="button"
+                    @onclick="() => SelectSkill(skill)">
+
+                <span class="skill-symbol">
+                    @skill.Symbol
+                </span>
+
+                <span class="skill-name">
+                    @skill.Name
+                </span>
+
+            </button>
+        }
+
+    </div>
+
+    @if (selectedSkill != null)
+    {
+        <div class="skill-detail">
+            <h3>@selectedSkill.Name</h3>
+            <p>@selectedSkill.Description</p>
+        </div>
+    }
+
+</section>
+
+@code {
+
+    private record Skill(
+        string Symbol,
+        string Name,
+        string Description
+    );
+
+    private readonly List<Skill> skills = new()
+    {
+        new("C#", "C#", "ASP.NET Core and backend development."),
+        new("Py", "Python", "Data analysis and machine learning."),
+        new("JS", "JavaScript", "Interactive web applications."),
+        new("SQL", "SQL", "Databases and queries."),
+        new("Git", "Git", "Version control and collaboration."),
+        new("Re", "React", "Component-based frontend development."),
+        new("EF", "Entity Framework", "Database access and migrations."),
+        new("Li", "Linux", "Terminal and system administration.")
+    };
+
+    private Skill? selectedSkill;
+
+    private void SelectSkill(Skill skill)
+    {
+        selectedSkill = skill;
+    }
+}
