@@ -79,22 +79,49 @@
    HERO AVATAR
 ========================= */
 
+
+/* ANIMATED HERO AVATAR */
+
 .hero-visual {
+    position: relative;
     width: 100%;
-    min-height: 0;
+    aspect-ratio: 4 / 5;
     border-radius: 28px;
     overflow: hidden;
-    background: transparent;
 }
 
-.hero-avatar {
-    display: block;
+.hero-avatar-fallback,
+.hero-avatar-video {
+    position: absolute;
+    inset: 0;
+
     width: 100%;
-    height: auto;
-    border-radius: 28px;
+    height: 100%;
+    object-fit: cover;
 
     transition: transform 0.5s ease;
 }
+
+.hero-avatar-video {
+    z-index: 1;
+}
+
+.hero-visual:hover .hero-avatar-video {
+    transform: scale(1.025);
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-avatar-video {
+        display: none;
+    }
+
+    .hero-avatar-fallback {
+        transition: none;
+    }
+}
+
 
 /* Avatar hover animation */
 
@@ -240,4 +267,110 @@
     .hero-button:hover {
         transform: none;
     }
+}
+
+
+/* ABOUT GRID */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 70px;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.about-content p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+.about-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.about-link:hover {
+    text-decoration: underline;
+}
+
+/* DIGITAL PROFILE CARD */
+
+.profile-card {
+    padding: 35px;
+    background: color-mix(
+        in srgb,
+        var(--bg) 95%,
+        var(--text) 5%
+    );
+
+    border: 1px solid var(--line);
+    border-radius: 24px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.profile-status {
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+.profile-card h3 {
+    color: var(--text);
+    font-size: 26px;
+    margin: 28px 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 17px 0;
+    border-top: 1px solid var(--line);
+}
+
+.profile-info span {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+.profile-info strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .profile-card {
+        padding: 25px;
+    }
+}
+
+.about {
+    padding-top: 55px;
+    padding-bottom: 55px;
 }

@@ -1,0 +1,300 @@
+
+@using CrazyCV.Models
+
+<section class="experience" id="experience">
+
+    <div class="journey-header">
+        <div>
+            <p class="section-label">04 / MY JOURNEY</p>
+            <h2>Experience & Education.</h2>
+
+            <p class="journey-intro">
+                Explore the experiences that shaped me.
+            </p>
+        </div>
+
+        <!-- EXPERIENCE / EDUCATION BUTTONS -->
+
+        <div class="journey-tabs">
+
+            <button type="button"
+                    class="journey-tab @(activeType == EntryType.Work ? "active" : "")"
+                    aria-pressed="@(activeType == EntryType.Work)"
+                    @onclick="() => ChangeType(EntryType.Work)">
+                Experience
+            </button>
+
+            <button type="button"
+                    class="journey-tab @(activeType == EntryType.Education ? "active" : "")"
+                    aria-pressed="@(activeType == EntryType.Education)"
+                    @onclick="() => ChangeType(EntryType.Education)">
+                Education
+            </button>
+
+        </div>
+    </div>
+
+    <div class="journey-layout">
+
+        <!-- LEFT: EXPERIENCE LIST -->
+
+        <div class="journey-items">
+
+            @foreach (var timelineItem in VisibleEntries)
+            {
+                <button type="button"
+                        @key="timelineItem.Id"
+                        class="journey-item @(selectedEntryId == timelineItem.Id ? "selected" : "")"
+                        aria-pressed="@(selectedEntryId == timelineItem.Id)"
+                        @onclick="() => SelectEntry(timelineItem.Id)">
+
+                    <span class="journey-item-info">
+                        <small>@timelineItem.Period</small>
+                        <strong>@timelineItem.Title</strong>
+                        <small>@timelineItem.Organization</small>
+                    </span>
+
+                    <span aria-hidden="true">↗</span>
+
+                </button>
+            }
+
+            <button type="button"
+                    class="journey-more"
+                    @onclick="ToggleMore">
+
+                @(showAll ? "Show less ↑" : "View more entries +")
+
+            </button>
+
+        </div>
+
+        <!-- RIGHT: SELECTED EXPERIENCE -->
+
+        <div class="journey-preview">
+
+            @if (SelectedEntry is TimelineEntry selectedEntry)
+            {
+                <div class="preview-top">
+                    <span>SELECTED / @selectedEntry.Type</span>
+                    <span>@selectedEntry.Period</span>
+                </div>
+
+                <div class="preview-content">
+
+                    <span class="preview-icon">
+                        @(selectedEntry.Type == EntryType.Education ? "✦" : "⌘")
+                    </span>
+
+                    <h3>@selectedEntry.Title</h3>
+
+                    <p class="preview-organization">
+                        @selectedEntry.Organization
+                    </p>
+
+                    <p class="preview-description">
+                        @selectedEntry.Description
+                    </p>
+
+                </div>
+
+                <!-- OSLOMET COURSE LINK -->
+
+                @if (selectedEntry.Id == "oslomet")
+                {
+                    <a class="courses-link"
+                       href="/education/oslomet">
+
+                        View all courses
+                        <span aria-hidden="true">↗</span>
+
+                    </a>
+                }
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+@code {
+
+    // =========================
+    // COMPONENT STATE
+    // =========================
+
+    private EntryType activeType = EntryType.Work;
+
+    private string? selectedEntryId = "novem";
+
+    private bool showAll = false;
+
+
+    // =========================
+    // EXPERIENCE DATA
+    // =========================
+
+    private readonly List<TimelineEntry> entries = new()
+    {
+        new(
+            "novem",
+            "Project Team Member",
+            "Novem / OsloMet",
+            "Jan – May 2026",
+            "Worked in a team on a real development project for Novem. Contributed to developing a technical solution and working with data flow from raw data to visualization.",
+            EntryType.Work,
+            true
+        ),
+
+        new(
+            "millum",
+            "Systems Monitoring",
+            "Millum AS",
+            "Jan 2018 – Jan 2026",
+            "Monitored business-critical systems during weekends and holidays. Investigated errors, resolved issues when possible and escalated incidents when necessary.",
+            EntryType.Work,
+            true
+        ),
+
+        new(
+            "oslomet",
+            "Bachelor in Information Technology",
+            "OsloMet",
+            "Aug 2024 – 2027",
+            "Bachelor's degree covering software development, programming, databases, networking, operating systems, artificial intelligence and cybersecurity.",
+            EntryType.Education,
+            true
+        ),
+
+        new(
+            "kiwi-carl-berner",
+            "Store Assistant",
+            "KIWI Carl Berner",
+            "Dec 2025 – Present",
+            "Customer service, checkout operations, stocking and daily store routines.",
+            EntryType.Work
+        ),
+
+        new(
+            "caretaker",
+            "Caretaker",
+            "Residential Property",
+            "Jan 2026 – Present",
+            "Responsible for basic maintenance and keeping shared residential areas clean, safe and functional.",
+            EntryType.Work
+        ),
+
+        new(
+            "nordstrand",
+            "Substitute Teacher & Assistant",
+            "Nordstrand skole",
+            "Aug 2024 – Jan 2026",
+            "Supported teaching, guided students and contributed to a positive learning environment.",
+            EntryType.Work
+        ),
+
+        new(
+            "kiwi-bogerud",
+            "Store Assistant",
+            "KIWI Bogerud",
+            "Aug 2023 – Jun 2024",
+            "Customer service, checkout operations and stocking.",
+            EntryType.Work
+        ),
+
+        new(
+            "oslokru",
+            "Stage & Event Crew",
+            "OsloKru",
+            "May – Sep 2022",
+            "Set up and dismantled equipment for concerts and major events, including Tons of Rock and OverOslo.",
+            EntryType.Work
+        ),
+
+        new(
+            "jans",
+            "Summer Employee",
+            "Jans Modellbiler",
+            "Jun – Aug 2019",
+            "Updated product information and content on the company's website.",
+            EntryType.Work
+        ),
+
+        new(
+            "hardanger",
+            "Idrett-Action",
+            "Hardanger Folkehøgskule",
+            "Aug 2022 – Jun 2023",
+            "Sports, outdoor activities, first aid, climbing, paddling and travelling.",
+            EntryType.Education
+        ),
+
+        new(
+            "akademiet",
+            "Media and Communication",
+            "Akademiet VGS",
+            "Aug 2020 – Jun 2022",
+            "Media and communication studies with specialization in esports and media development.",
+            EntryType.Education
+        ),
+
+        new(
+            "f21",
+            "Media and Communication",
+            "Fyrstikkalleen skole",
+            "Aug 2019 – Jun 2020",
+            "First year of upper secondary education, including photography and digital design tools.",
+            EntryType.Education
+        )
+    };
+
+
+    // =========================
+    // LINQ FILTERING
+    // =========================
+
+    private IEnumerable<TimelineEntry> VisibleEntries =>
+        entries.Where(e =>
+            e.Type == activeType &&
+            (showAll || e.Featured));
+
+
+    private TimelineEntry? SelectedEntry =>
+        VisibleEntries.FirstOrDefault(
+            e => e.Id == selectedEntryId
+        );
+
+
+    // =========================
+    // COMPONENT METHODS
+    // =========================
+
+    private void SelectEntry(string id)
+    {
+        selectedEntryId = id;
+    }
+
+
+    private void ChangeType(EntryType type)
+    {
+        activeType = type;
+        showAll = false;
+
+        selectedEntryId = entries
+            .FirstOrDefault(e =>
+                e.Type == type && e.Featured)
+            ?.Id;
+    }
+
+
+    private void ToggleMore()
+    {
+        showAll = !showAll;
+
+        if (!VisibleEntries.Any(e => e.Id == selectedEntryId))
+        {
+            selectedEntryId = VisibleEntries.FirstOrDefault()?.Id;
+        }
+    }
+}

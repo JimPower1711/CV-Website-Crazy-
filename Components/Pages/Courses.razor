@@ -1,0 +1,122 @@
+
+@page "/education/oslomet"
+
+<PageTitle>Education | Crazy CV</PageTitle>
+
+<section class="courses-page">
+
+    <a href="/#experience" class="back-link">
+        ← Back to experience
+    </a>
+
+    <p class="section-label">EDUCATION / OSLOMET</p>
+
+    <h1>My academic journey.</h1>
+
+    <p class="courses-intro">
+        Bachelor in Information Technology at OsloMet,
+        2024–2027.
+
+        An overview of my coursework and subjects
+        currently in progress.
+    </p>
+
+    <div class="courses-grid">
+
+        @foreach (var group in groups)
+        {
+            <details class="course-group">
+
+                <summary>
+                    <span>
+                        <small>@group.Status</small>
+                        <strong>@group.Title</strong>
+                    </span>
+
+                    <span class="course-count">
+                        @group.Items.Count courses +
+                    </span>
+                </summary>
+
+                <ul class="course-list">
+                    @foreach (var course in group.Items)
+                    {
+                        <li>
+                            <span>@course.Code</span>
+                            <strong>@course.Name</strong>
+                        </li>
+                    }
+                </ul>
+
+            </details>
+        }
+
+    </div>
+
+    <p class="course-note">
+        Planned for spring 2027: Bachelor's thesis
+        and one elective course.
+    </p>
+
+</section>
+
+@code {
+    private record Course(string Code, string Name);
+
+    private record CourseGroup(
+        string Title,
+        string Status,
+        List<Course> Items
+    );
+
+    private readonly List<CourseGroup> groups = new()
+    {
+        new(
+            "Development & Projects",
+            "PREVIOUS COURSEWORK",
+            new()
+            {
+                new("DATA1200", "Webutvikling"),
+                new("DAPE1400", "Programmering"),
+                new("DATA1700", "Webprogrammering"),
+                new("DAFE2200", "Systemutvikling"),
+                new("DATA3710", "Praktisk IT-prosjekt")
+            }
+        ),
+
+        new(
+            "Data & Infrastructure",
+            "PREVIOUS COURSEWORK",
+            new()
+            {
+                new("DATA1500", "Databaser"),
+                new("DATS2300", "Algoritmer og datastrukturer"),
+                new("DATA2500", "Operativsystemer"),
+                new("DATA2410", "Datanettverk og skytjenester"),
+                new("ADSE1310", "Internet of Things")
+            }
+        ),
+
+        new(
+            "Design & Mathematics",
+            "PREVIOUS COURSEWORK",
+            new()
+            {
+                new("ADSE2100", "Menneske-maskin-interaksjon"),
+                new("DAPE1300", "Diskret matematikk"),
+                new("DATA1100", "Teknologi og samfunn")
+            }
+        ),
+
+        new(
+            "Autumn 2026",
+            "CURRENTLY STUDYING",
+            new()
+            {
+                new("ITPE3200", "Webapplikasjoner"),
+                new("ITPE3100", "Datasikkerhet"),
+                new("DAVE3625", "Introduksjon til kunstig intelligens")
+            }
+        )
+    };
+}

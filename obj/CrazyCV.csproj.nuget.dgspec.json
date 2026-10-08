@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ender\\OneDrive\\Dokumenter\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj": {}
+    "C:\\Users\\greencom\\Documents\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ender\\OneDrive\\Dokumenter\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj": {
+    "C:\\Users\\greencom\\Documents\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ender\\OneDrive\\Dokumenter\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj",
+        "projectUniqueName": "C:\\Users\\greencom\\Documents\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj",
         "projectName": "CrazyCV",
-        "projectPath": "C:\\Users\\ender\\OneDrive\\Dokumenter\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj",
-        "packagesPath": "C:\\Users\\ender\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ender\\OneDrive\\Dokumenter\\GitHub\\CV-Website-Crazy-\\obj\\",
+        "projectPath": "C:\\Users\\greencom\\Documents\\GitHub\\CV-Website-Crazy-\\CrazyCV.csproj",
+        "packagesPath": "C:\\Users\\greencom\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\greencom\\Documents\\GitHub\\CV-Website-Crazy-\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ender\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\greencom\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"

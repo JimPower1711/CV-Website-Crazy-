@@ -1,0 +1,129 @@
+
+.courses-page[b-rrot860nk9] {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 6%;
+    min-height: 85vh;
+    color: var(--text);
+}
+
+.back-link[b-rrot860nk9] {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    margin-bottom: 60px;
+}
+
+.section-label[b-rrot860nk9] {
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.courses-page h1[b-rrot860nk9] {
+    font-size: clamp(40px, 6vw, 75px);
+    margin: 20px 0;
+}
+
+.courses-intro[b-rrot860nk9] {
+    max-width: 650px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 45px;
+}
+
+.courses-grid[b-rrot860nk9] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+}
+
+.course-group[b-rrot860nk9] {
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.course-group summary[b-rrot860nk9] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    padding: 28px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.course-group summary[b-rrot860nk9]::-webkit-details-marker {
+    display: none;
+}
+
+.course-group summary > span:first-child[b-rrot860nk9] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.course-group small[b-rrot860nk9] {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.course-group strong[b-rrot860nk9] {
+    font-size: 17px;
+}
+
+.course-count[b-rrot860nk9] {
+    color: var(--muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.course-group[open][b-rrot860nk9] {
+    border-color: var(--accent);
+}
+
+.course-list[b-rrot860nk9] {
+    margin: 0;
+    padding: 0 28px 20px;
+    list-style: none;
+}
+
+.course-list li[b-rrot860nk9] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+}
+
+.course-list li span[b-rrot860nk9] {
+    color: var(--accent);
+    font-size: 12px;
+}
+
+.course-list li strong[b-rrot860nk9] {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.course-note[b-rrot860nk9] {
+    margin-top: 35px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .courses-grid[b-rrot860nk9] {
+        grid-template-columns: 1fr;
+    }
+
+    .courses-page[b-rrot860nk9] {
+        padding: 55px 6%;
+    }
+}

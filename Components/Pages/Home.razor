@@ -35,26 +35,58 @@
         </div>
 
         
+       
         <div class="hero-visual">
-            <img src="/images/projects/crazycv-avatar.png" alt="Creative developer avatar wearing a Superman hoodie"
-                 class="hero-avatar" fetchpriority="high" />
+
+            <img class="hero-avatar-fallback" src="/images/projects/crazycv-avatar.png"
+                 alt="Creative developer avatar wearing a Superman hoodie" />
+
+            <video class="hero-avatar-video" autoplay muted loop playsinline preload="metadata"
+                   poster="/images/projects/crazycv-avatar.png" aria-hidden="true">
+
+                <source src="/videos/crazycv-avatar-motion.mp4" type="video/mp4" />
+
+            </video>
+
         </div>
 
 
-    </section>
-
-    <section class="about" id="about">
-
-        <p class="section-label">01 / ABOUT ME</p>
-
-        <h2>Beyond the Code.</h2>
-
-        <p>
-            I enjoy combining technology, creativity,
-            and continuous improvement.
-        </p>
 
     </section>
+
+    
+    
+<section class="about" id="about">
+
+    <div class="about-grid">
+
+        <div class="about-content">
+
+            <p class="section-label">01 / ABOUT ME</p>
+
+            <h2>More than just code.</h2>
+
+            <p>
+                I'm an Information Technology student
+                at OsloMet with a passion for creating,
+                learning and solving problems.
+            </p>
+
+            <p>
+                But there's more to me than technology.
+                Flip my digital identity card to discover
+                what drives me outside of programming.
+            </p>
+
+        </div>
+
+        <IdentityCard />
+
+    </div>
+
+</section>
+
+
 
     <PeriodicTable />
 
@@ -85,6 +117,9 @@
         </div>
 
     </section>
+
+
+    <ExperienceTimeline />
 
 
 </main>

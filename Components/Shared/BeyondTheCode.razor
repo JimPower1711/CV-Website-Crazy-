@@ -1,0 +1,108 @@
+
+<section class="beyond" id="beyond">
+
+    <p class="section-label">05 / BEYOND THE CODE</p>
+
+    <h2>There's more to my story.</h2>
+
+    <p class="beyond-intro">
+        A few things that inspire me outside of technology.
+    </p>
+
+    <div class="interest-grid">
+
+        @foreach (var interest in interests)
+        {
+            <button type="button"
+                    @key="interest.Id"
+                    class="interest-card @(selectedId == interest.Id ? "selected" : "")"
+                    aria-pressed="@(selectedId == interest.Id)"
+                    @onclick="() => SelectInterest(interest.Id)">
+
+                <span class="interest-number">
+                    @interest.Number
+                </span>
+
+                <span class="interest-icon" aria-hidden="true">
+                    @interest.Icon
+                </span>
+
+                <strong>@interest.Title</strong>
+
+                <span class="interest-arrow" aria-hidden="true">
+                    ↗
+                </span>
+
+            </button>
+        }
+
+    </div>
+
+    @if (SelectedInterest is Interest selectedInterest)
+    {
+        <div class="interest-detail">
+
+            <span class="detail-category">
+                @selectedInterest.Category
+            </span>
+
+            <h3>@selectedInterest.Title</h3>
+
+            <p>@selectedInterest.Description</p>
+
+        </div>
+    }
+
+</section>
+
+@code {
+
+    private record Interest(
+        string Id,
+        string Number,
+        string Icon,
+        string Title,
+        string Category,
+        string Description
+    );
+
+    private readonly List<Interest> interests = new()
+    {
+        new(
+            "training",
+            "01",
+            "◆",
+            "Training",
+            "DISCIPLINE",
+            "Strength training has taught me the value of consistency, dedication and continuous improvement."
+        ),
+
+        new(
+            "gaming",
+            "02",
+            "⌘",
+            "Gaming",
+            "STRATEGY",
+            "I enjoy gaming for its creativity, problem solving, strategy and the opportunity to explore new worlds."
+        ),
+
+        new(
+            "heroes",
+            "03",
+            "✦",
+            "Superheroes",
+            "INSPIRATION",
+            "Superhero stories inspire me through their characters, creativity and themes of personal growth."
+        )
+    };
+
+    private string selectedId = "training";
+
+    private Interest? SelectedInterest =>
+        interests.FirstOrDefault(i => i.Id == selectedId);
+
+    private void SelectInterest(string id)
+    {
+        selectedId = id;
+    }
+}

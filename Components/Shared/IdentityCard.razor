@@ -1,0 +1,221 @@
+
+@using CrazyCV.Models
+@using CrazyCV.Services
+
+@inject PersonalInterestService InterestService
+
+<div class="identity-component">
+
+    <!-- HANGING STRAP -->
+
+    <div class="identity-strap" aria-hidden="true"></div>
+
+    <!-- IDENTITY CARD -->
+
+    <div class="identity-card">
+
+        <div class="identity-card-inner @(isFlipped ? "flipped" : "")">
+
+            <!-- ========================= -->
+            <!-- FRONT: PROFESSIONAL SIDE -->
+            <!-- ========================= -->
+
+            <section class="identity-face identity-front"
+                     aria-hidden="@isFlipped">
+
+                <div class="identity-top">
+                    <span>JPH / DIGITAL IDENTITY</span>
+                    <span>✦</span>
+                </div>
+
+                <div class="identity-content">
+
+                    <h3>What I am.</h3>
+
+                    <p class="identity-name">
+                        Jonas Palmgren Hesmyr
+                    </p>
+
+                    <div class="identity-facts">
+
+                        <div>
+                            <span>01</span>
+                            <strong>IT Student</strong>
+                            <small>OsloMet · Class of 2027</small>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <strong>Developer</strong>
+                            <small>C# · .NET · Python · Java</small>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <strong>Problem Solver</strong>
+                            <small>
+                                Curious, driven and always learning
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="identity-footer">
+                    <span>PROFESSIONAL / 01</span>
+                    <span>JPH ©</span>
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- BACK: PERSONAL SIDE -->
+            <!-- ========================= -->
+
+            <section class="identity-face identity-back"
+                     aria-hidden="@(!isFlipped)">
+
+                <div class="identity-top">
+                    <span>JPH / PERSONAL FILE</span>
+                    <span>✦</span>
+                </div>
+
+                <div class="identity-content">
+
+                    <h3>Beyond the Code.</h3>
+
+                    <p class="identity-name">
+                        A little more about what drives me.
+                    </p>
+
+                    <!-- DYNAMIC INTEREST BUTTONS -->
+
+                    <div class="interest-tabs">
+
+                        @foreach (var interestItem in Interests)
+                        {
+                            <button type="button"
+                                    @key="interestItem.Id"
+                                    disabled="@(!isFlipped)"
+                                    class="interest-tab @(selectedInterestId == interestItem.Id ? "active" : "")"
+                                    aria-pressed="@(selectedInterestId == interestItem.Id)"
+                                    @onclick="() => SelectInterest(interestItem.Id)">
+
+                                <span aria-hidden="true">
+                                    @interestItem.Icon
+                                </span>
+
+                                <small>@interestItem.Title</small>
+
+                            </button>
+                        }
+
+                    </div>
+
+
+                    <!-- SELECTED INTEREST DETAILS -->
+
+                    @if (SelectedInterest is PersonalInterest selectedInterest)
+                    {
+                        <div class="interest-story" aria-live="polite">
+
+                            <span class="story-label">
+                                PERSONAL / @selectedInterest.Title.ToUpperInvariant()
+                            </span>
+
+                            <h4>@selectedInterest.Heading</h4>
+
+                            <p>@selectedInterest.Description</p>
+
+                        </div>
+                    }
+
+                </div>
+
+                <div class="identity-footer">
+                    <span>PERSONAL / 02</span>
+                    <span>JPH ©</span>
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- FLIP BUTTON -->
+    <!-- ========================= -->
+
+    <button class="identity-flip-button"
+            type="button"
+            @onclick="FlipCard">
+
+        <span aria-hidden="true">↻</span>
+
+        @(isFlipped
+            ? "Professional side"
+            : "Discover more about me")
+
+    </button>
+
+</div>
+
+
+@code {
+
+    // =========================
+    // COMPONENT STATE
+    // =========================
+
+    private bool isFlipped = false;
+
+    private string? selectedInterestId;
+
+
+    // =========================
+    // DATA FROM SERVICE
+    // =========================
+
+    private IReadOnlyList<PersonalInterest> Interests =>
+        InterestService.GetAll();
+
+
+    // =========================
+    // SELECTED INTEREST (LINQ)
+    // =========================
+
+    private PersonalInterest? SelectedInterest =>
+        Interests.FirstOrDefault(
+            item => item.Id == selectedInterestId
+        );
+
+
+    // =========================
+    // COMPONENT LIFECYCLE
+    // =========================
+
+    protected override void OnInitialized()
+    {
+        selectedInterestId = Interests.FirstOrDefault()?.Id;
+    }
+
+
+    // =========================
+    // COMPONENT METHODS
+    // =========================
+
+    private void FlipCard()
+    {
+        isFlipped = !isFlipped;
+    }
+
+
+    private void SelectInterest(string id)
+    {
+        selectedInterestId = id;
+    }
+}
