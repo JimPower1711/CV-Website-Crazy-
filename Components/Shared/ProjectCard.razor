@@ -2,6 +2,26 @@
 
 <article class="project-card" id="@Item.Id">
 
+    
+<div class="project-cover @Item.Id">
+
+    @if (!string.IsNullOrWhiteSpace(Item.ImagePath))
+    {
+        <img src="@Item.ImagePath"
+             alt="Screenshot from @Item.Title"
+             loading="lazy" />
+    }
+    else
+    {
+        <div class="project-cover-placeholder">
+            <span>FEATURED PROJECT</span>
+            <strong>@Item.Title</strong>
+        </div>
+    }
+
+</div>
+
+
     <h3>@Item.Title</h3>
 
     <p>@Item.Description</p>

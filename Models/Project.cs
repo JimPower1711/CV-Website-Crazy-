@@ -9,5 +9,6 @@ public record Project(
     string? GitHubUrl = null,
     string? Challenge = null,
     string? MyContribution = null,
-    string? LessonsLearned = null
+    string? LessonsLearned = null,
+    string? ImagePath = null
 );

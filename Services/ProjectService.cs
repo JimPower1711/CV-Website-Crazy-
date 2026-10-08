@@ -5,8 +5,8 @@ namespace CrazyCV.Services;
 
 public class ProjectService
 {
-    
-private readonly List<Project> _projects = new()
+
+    private readonly List<Project> _projects = new()
 {
     new(
         "galactic-slicer",
@@ -18,7 +18,9 @@ private readonly List<Project> _projects = new()
 
         MyContribution: "ASP.NET Core setup, database configuration, Entity Framework, validation, error handling and logging.",
 
-        LessonsLearned: "Building structured .NET applications, working with databases and improving backend reliability."
+        LessonsLearned: "Building structured .NET applications, working with databases and improving backend reliability.",
+
+        ImagePath: "/images/projects/galactic-slicer.png"
     ),
 
     new(
@@ -31,7 +33,9 @@ private readonly List<Project> _projects = new()
 
         MyContribution: "Data preprocessing, feature engineering and training a Decision Tree classifier.",
 
-        LessonsLearned: "Preparing time-series data, training classification models and evaluating predictions."
+        LessonsLearned: "Preparing time-series data, training classification models and evaluating predictions.",
+
+        ImagePath: "/images/projects/rocketleague.png"
     )
 };
 
