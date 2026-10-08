@@ -36,13 +36,32 @@
 
     </div>
 
-    @if (selectedSkill != null)
-    {
-        <div class="skill-detail">
-            <h3>@selectedSkill.Name</h3>
-            <p>@selectedSkill.Description</p>
-        </div>
-    }
+    
+@if (selectedSkill != null)
+{
+    <div class="skill-detail">
+
+        <h3>@selectedSkill.Name</h3>
+
+        <p>@selectedSkill.Description</p>
+
+        @if (selectedSkill.ProjectId != null)
+        {
+            <a class="skill-project-link"
+               href="@($"#{selectedSkill.ProjectId}")">
+
+                <span>
+                    Used in: @selectedSkill.ProjectName
+                </span>
+
+                <span aria-hidden="true">↗</span>
+
+            </a>
+        }
+
+    </div>
+}
+
 
 </section>
 
@@ -52,22 +71,27 @@
         string Symbol,
         string Name,
         string Description,
-        string Category
-    );
+        string Category,
+        string? ProjectName = null,
+        string? ProjectId = null
+);
     
     private readonly List<Skill> skills = new()
 {
-    new("C#", "C#", "ASP.NET Core development.", "Languages"),
+    new("C#", "C#", "ASP.NET Core development.", "Languages", "Galactic Slicer", "galactic-slicer"),
     new("Ja", "Java", "Object-oriented programming.", "Languages"),
-    new("Py", "Python", "Machine learning and data analysis.", "Languages"),
+    new("Py", "Python", "Machine learning and data analysis.",
+    "Languages", "Rocket League Skill Detection", "rocket-league-ml"),
     new("JS", "JavaScript", "Interactive web applications.", "Languages"),
 
     new("Ht", "HTML", "Website structure.", "Frontend"),
     new("Cs", "CSS", "Styling and responsive design.", "Frontend"),
     new("Re", "React", "Component-based user interfaces.", "Frontend"),
 
-    new("Nt", ".NET", "Backend and web development.", "Backend"),
-    new("EF", "Entity Framework", "Database access and migrations.", "Backend"),
+    new("Nt", ".NET", "Backend and web development.",
+    "Backend", "Galactic Slicer", "galactic-slicer"),
+    new("EF", "Entity Framework", "Database access and migrations.",
+    "Backend", "Galactic Slicer", "galactic-slicer"),
 
     new("SQL", "SQL", "Database queries.", "Databases"),
     new("Sq", "SQLite", "Relational database management.", "Databases"),
