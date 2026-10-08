@@ -1,4 +1,3 @@
-
 /* HERO SECTION */
 
 .hero {
@@ -62,7 +61,7 @@
     font-size: 14px;
 
     transition: transform 0.3s ease,
-                background 0.3s ease;
+        background 0.3s ease;
 }
 
 .hero-button:hover {
@@ -77,11 +76,9 @@
     min-height: 450px;
     border-radius: 28px;
 
-    background: linear-gradient(
-        135deg,
-        #EAE5F6,
-        #D9D3EC
-    );
+    background: linear-gradient(135deg,
+            #EAE5F6,
+            #D9D3EC);
 
     display: flex;
     justify-content: center;
@@ -128,7 +125,7 @@
     margin: 20px 0;
 }
 
-.about > p:last-child {
+.about>p:last-child {
     max-width: 600px;
     color: #646875;
     line-height: 1.8;
@@ -155,5 +152,35 @@
 
     .about {
         padding: 70px 6%;
+    }
+}
+
+
+.projects {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 6%;
+    color: var(--text);
+}
+
+.projects h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin: 20px 0;
+}
+
+.projects-intro {
+    color: var(--muted);
+    margin-bottom: 40px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+@media (max-width: 700px) {
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 }

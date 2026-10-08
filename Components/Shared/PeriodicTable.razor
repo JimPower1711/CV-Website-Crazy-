@@ -1,3 +1,7 @@
+@using CrazyCV.Models
+
+
+
 <section class="skills" id="skills">
 
     <p class="skills-label">02 / TECH STACK</p>
@@ -37,44 +41,34 @@
     </div>
 
     
-@if (selectedSkill != null)
-{
-    <div class="skill-detail">
+    @if (selectedSkill != null)
+    {
+        <div class="skill-detail">
 
-        <h3>@selectedSkill.Name</h3>
+            <h3>@selectedSkill.Name</h3>
 
-        <p>@selectedSkill.Description</p>
+            <p>@selectedSkill.Description</p>
 
-        @if (selectedSkill.ProjectId != null)
-        {
-            <a class="skill-project-link"
-               href="@($"#{selectedSkill.ProjectId}")">
+            @if (selectedSkill.ProjectId != null)
+            {
+                <a class="skill-project-link" href="@($"#{selectedSkill.ProjectId}")">
 
-                <span>
-                    Used in: @selectedSkill.ProjectName
-                </span>
+                    <span>
+                        Used in: @selectedSkill.ProjectName
+                    </span>
 
-                <span aria-hidden="true">↗</span>
+                    <span aria-hidden="true">↗</span>
 
-            </a>
-        }
+                </a>
+            }
 
-    </div>
-}
+        </div>
+    }
 
 
 </section>
 
 @code {
-
-    private record Skill(
-        string Symbol,
-        string Name,
-        string Description,
-        string Category,
-        string? ProjectName = null,
-        string? ProjectId = null
-);
     
     private readonly List<Skill> skills = new()
 {

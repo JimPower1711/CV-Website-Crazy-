@@ -1,0 +1,128 @@
+
+/* PROJECT CARD */
+
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px;
+
+    padding: 36px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+
+    background: color-mix(
+        in srgb,
+        var(--bg) 95%,
+        var(--text) 5%
+    );
+
+    color: var(--text);
+    overflow: hidden;
+    scroll-margin-top: 40px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* Subtle purple detail */
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 36px;
+
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 0 0 4px 4px;
+}
+
+/* Hover animation */
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+
+    box-shadow: 0 18px 45px
+        rgba(40, 32, 90, 0.10);
+}
+
+/* Project title */
+
+.project-card h3 {
+    font-size: clamp(24px, 2.5vw, 32px);
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    margin: 28px 0 16px;
+}
+
+/* Description */
+
+.project-card p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+/* Technology tags */
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.tech-tag {
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 50px;
+
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* GitHub link */
+
+.project-card a {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 28px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+    .project-card {
+        min-height: 260px;
+        padding: 26px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        transition: none;
+    }
+
+    .project-card:hover {
+        transform: none;
+    }
+}

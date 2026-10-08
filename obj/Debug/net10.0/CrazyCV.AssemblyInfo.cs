@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CrazyCV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01a43246978a0aa1207fc40a63c3f6b65d81c82d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d127b06c41685a6fd675948a6a53ad8c8deabdc0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CrazyCV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CrazyCV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
