@@ -1,0 +1,74 @@
+
+.project-details[b-qpgg08o5dy] {
+    max-width: 1100px;
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 80px 6%;
+    color: var(--text);
+}
+
+.back-link[b-qpgg08o5dy] {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.section-label[b-qpgg08o5dy] {
+    margin-top: 70px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.project-details h1[b-qpgg08o5dy] {
+    font-size: clamp(40px, 6vw, 80px);
+    margin: 20px 0;
+}
+
+.description[b-qpgg08o5dy] {
+    max-width: 700px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.project-details h2[b-qpgg08o5dy] {
+    margin-top: 60px;
+    font-size: 28px;
+}
+
+.technology-list[b-qpgg08o5dy] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.technology-tag[b-qpgg08o5dy] {
+    padding: 12px 20px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    color: var(--accent);
+}
+
+.github-link[b-qpgg08o5dy] {
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--accent);
+}
+
+
+.case-study[b-qpgg08o5dy] {
+    margin-top: 48px;
+    max-width: 750px;
+}
+
+.case-study h2[b-qpgg08o5dy] {
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+
+.case-study p[b-qpgg08o5dy] {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 16px;
+}

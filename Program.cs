@@ -1,6 +1,9 @@
 using CrazyCV.Components;
+using CrazyCV.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ProjectService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

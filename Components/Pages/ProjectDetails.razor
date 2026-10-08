@@ -1,0 +1,65 @@
+
+@page "/projects/{Id}"
+
+@using CrazyCV.Models
+@using CrazyCV.Services
+@inject ProjectService ProjectService
+
+<PageTitle>@(project?.Title ?? "Project not found") | Crazy CV</PageTitle>
+
+<section class="project-details">
+
+    <a class="back-link" href="/#projects">
+        ← Back to projects
+    </a>
+
+    @if (project == null)
+    {
+        <h1>Project not found</h1>
+        <p>We couldn't find this project.</p>
+    }
+    else
+    {
+        <p class="section-label">PROJECT OVERVIEW</p>
+
+        <h1>@project.Title</h1>
+
+        <p class="description">
+            @project.Description
+        </p>
+
+        <h2>Technologies used</h2>
+
+        <div class="technology-list">
+            @foreach (var technology in project.Technologies)
+            {
+                <span class="technology-tag">
+                    @technology
+                </span>
+            }
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(project.GitHubUrl))
+        {
+            <a class="github-link"
+               href="@project.GitHubUrl"
+               target="_blank"
+               rel="noopener noreferrer">
+                View on GitHub ↗
+            </a>
+        }
+    }
+
+</section>
+
+@code {
+    [Parameter]
+    public string Id { get; set; } = string.Empty;
+
+    private Project? project;
+
+    protected override void OnParametersSet()
+    {
+        project = ProjectService.GetById(Id);
+    }
+}

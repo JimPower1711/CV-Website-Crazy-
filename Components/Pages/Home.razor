@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using CrazyCV.Components.Shared;
 @using CrazyCV.Models;
+@using CrazyCV.Services;
+@inject ProjectService ProjectService
 
 
 <PageTitle>Crazy CV | Portfolio</PageTitle>
@@ -76,7 +78,7 @@
             
             <div class="project-grid">
 
-                @foreach (var project in projects)
+                @foreach (var project in ProjectService.GetAll())
                 {
                     <ProjectCard Item="@project" @key="project.Id" />
                 }
@@ -90,24 +92,4 @@
 
 
 </main>
-
-
-@code {
-    private readonly List<Project> projects = new()
-    {
-        new(
-            "galactic-slicer",
-            "Galactic Slicer",
-            "A Star Wars-inspired platform for learning cybersecurity.",
-            new List<string> { "C#", ".NET", "SQLite" }
-        ),
-
-        new(
-            "rocket-league-ml",
-            "Rocket League Skill Detection",
-            "Machine learning model for classifying gameplay skills.",
-            new List<string> { "Python", "Pandas", "Scikit-learn" }
-        )
-    };
-}
 

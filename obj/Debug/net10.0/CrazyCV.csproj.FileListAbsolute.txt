@@ -85,5 +85,6 @@ C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\re
 C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
 C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Shared\PeriodicTable.razor.rz.scp.css
 C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Shared\ProjectCard.razor.rz.scp.css
-C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\p6z96zx7oa-{0}-sjuzn0p7l9-sjuzn0p7l9.gz
-C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\o90jt3l2yb-{0}-sjuzn0p7l9-sjuzn0p7l9.gz
+C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Pages\ProjectDetails.razor.rz.scp.css
+C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\p6z96zx7oa-{0}-ighb2dtsgx-ighb2dtsgx.gz
+C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\o90jt3l2yb-{0}-ighb2dtsgx-ighb2dtsgx.gz

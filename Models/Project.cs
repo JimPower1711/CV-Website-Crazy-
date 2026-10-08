@@ -6,5 +6,8 @@ public record Project(
     string Title,
     string Description,
     List<string> Technologies,
-    string? GitHubUrl = null
+    string? GitHubUrl = null,
+    string? Challenge = null,
+    string? MyContribution = null,
+    string? LessonsLearned = null
 );
