@@ -83,5 +83,6 @@ C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\Cr
 C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\CrazyCV.genruntimeconfig.cache
 C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\ref\CrazyCV.dll
 C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
-C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\p6z96zx7oa-{0}-wfdkhc5htj-wfdkhc5htj.gz
-C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\o90jt3l2yb-{0}-wfdkhc5htj-wfdkhc5htj.gz
+C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Shared\PeriodicTable.razor.rz.scp.css
+C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\p6z96zx7oa-{0}-zou7ir0zfw-zou7ir0zfw.gz
+C:\Users\ender\OneDrive\Dokumenter\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\o90jt3l2yb-{0}-zou7ir0zfw-zou7ir0zfw.gz

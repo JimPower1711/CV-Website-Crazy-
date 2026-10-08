@@ -1,16 +1,27 @@
-
 <section class="skills" id="skills">
 
     <p class="skills-label">02 / TECH STACK</p>
     <h2>The periodic table of my stack.</h2>
 
+
+    <div class="category-filters">
+
+        @foreach (var category in categories)
+        {
+            <button type="button" class="filter-button @(selectedCategory == category ? "active" : "")"
+                    @onclick="() => SelectCategory(category)">
+                @category
+            </button>
+        }
+
+    </div>
+
+    
     <div class="skill-grid">
 
-        @foreach (var skill in skills)
+        @foreach (var skill in FilteredSkills)
         {
-            <button class="skill-tile"
-                    type="button"
-                    @onclick="() => SelectSkill(skill)">
+            <button class="skill-tile" type="button" @onclick="() => SelectSkill(skill)">
 
                 <span class="skill-symbol">
                     @skill.Symbol
@@ -40,20 +51,32 @@
     private record Skill(
         string Symbol,
         string Name,
-        string Description
+        string Description,
+        string Category
     );
-
+    
     private readonly List<Skill> skills = new()
-    {
-        new("C#", "C#", "ASP.NET Core and backend development."),
-        new("Py", "Python", "Data analysis and machine learning."),
-        new("JS", "JavaScript", "Interactive web applications."),
-        new("SQL", "SQL", "Databases and queries."),
-        new("Git", "Git", "Version control and collaboration."),
-        new("Re", "React", "Component-based frontend development."),
-        new("EF", "Entity Framework", "Database access and migrations."),
-        new("Li", "Linux", "Terminal and system administration.")
-    };
+{
+    new("C#", "C#", "ASP.NET Core development.", "Languages"),
+    new("Ja", "Java", "Object-oriented programming.", "Languages"),
+    new("Py", "Python", "Machine learning and data analysis.", "Languages"),
+    new("JS", "JavaScript", "Interactive web applications.", "Languages"),
+
+    new("Ht", "HTML", "Website structure.", "Frontend"),
+    new("Cs", "CSS", "Styling and responsive design.", "Frontend"),
+    new("Re", "React", "Component-based user interfaces.", "Frontend"),
+
+    new("Nt", ".NET", "Backend and web development.", "Backend"),
+    new("EF", "Entity Framework", "Database access and migrations.", "Backend"),
+
+    new("SQL", "SQL", "Database queries.", "Databases"),
+    new("Sq", "SQLite", "Relational database management.", "Databases"),
+
+    new("Git", "Git", "Version control.", "Tools"),
+    new("Li", "Linux", "Operating systems and terminal.", "Tools"),
+
+    new("Cy", "Cybersecurity", "Security principles and cryptography.", "Security")
+};
 
     private Skill? selectedSkill;
 
@@ -61,4 +84,31 @@
     {
         selectedSkill = skill;
     }
+
+
+    private readonly string[] categories =
+    {
+    "All",
+    "Languages",
+    "Frontend",
+    "Backend",
+    "Databases",
+    "Tools",
+    "Security"
+};
+
+    private string selectedCategory = "All";
+
+    private IEnumerable<Skill> FilteredSkills =>
+        selectedCategory == "All"
+            ? skills
+            : skills.Where(skill => skill.Category == selectedCategory);
+
+    private void SelectCategory(string category)
+    {
+        selectedCategory = category;
+        selectedSkill = null;
+    }
+
+
 }

@@ -570,3 +570,138 @@
         padding: 70px 6%;
     }
 }
+/* /Components/Shared/PeriodicTable.razor.rz.scp.css */
+
+.skills[b-gsb3853yl4] {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 6%;
+    color: var(--text);
+}
+
+.skills-label[b-gsb3853yl4] {
+    color: var(--accent);
+}
+
+.skills h2[b-gsb3853yl4] {
+    font-size: clamp(32px, 4vw, 56px);
+    margin: 20px 0 40px;
+}
+
+.skill-grid[b-gsb3853yl4] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+}
+/* Technology grid */
+
+.skill-grid[b-gsb3853yl4] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+
+    max-width: 920px;
+    margin: 0 auto 28px;
+}
+
+/* Technology tiles */
+
+.skill-tile[b-gsb3853yl4] {
+    flex: 0 1 155px;
+    box-sizing: border-box;
+    min-height: 145px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    background: transparent;
+    color: var(--text);
+
+    border: 1px solid var(--line);
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    transition: transform 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.skill-tile:hover[b-gsb3853yl4] {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.skill-tile:focus-visible[b-gsb3853yl4] {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.skill-symbol[b-gsb3853yl4] {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.skill-name[b-gsb3853yl4] {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: left;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .skill-tile[b-gsb3853yl4] {
+        flex: 0 0 calc(50% - 7px);
+        min-height: 130px;
+    }
+}
+
+
+.skill-detail[b-gsb3853yl4] {
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.skill-detail p[b-gsb3853yl4] {
+    color: var(--muted);
+}
+
+
+/* CATEGORY FILTERS */
+
+.category-filters[b-gsb3853yl4] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.filter-button[b-gsb3853yl4] {
+    padding: 10px 18px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.filter-button:hover[b-gsb3853yl4] {
+    border-color: var(--accent);
+}
+
+.filter-button.active[b-gsb3853yl4] {
+    background: var(--accent);
+    color: #FFFFFF;
+    border-color: var(--accent);
+}
+
