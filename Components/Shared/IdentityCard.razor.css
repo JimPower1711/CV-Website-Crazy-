@@ -1,4 +1,8 @@
 
+/* ========================================
+   CRAZY CV - IDENTITY CARD
+======================================== */
+
 .identity-component {
     width: 100%;
     max-width: 390px;
@@ -11,26 +15,87 @@
     color: var(--text);
 }
 
-/* Hanging strap */
+/* ========================================
+   HANGING STRAP
+======================================== */
+
+
+/* HANGING STRAP */
 
 .identity-strap {
-    width: 12px;
-    height: 36px;
+    position: relative;
+    z-index: 2;
 
-    background: var(--accent);
-    opacity: 0.6;
+    width: 14px;
+    height: 38px;
 
-    border-radius: 8px 8px 3px 3px;
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        color-mix(in srgb, var(--accent) 65%, white)
+    );
+
+    border-radius: 8px;
 }
 
-/* 3D CARD */
+/* Upper strap loop */
+
+.identity-strap::before {
+    content: "";
+
+    position: absolute;
+    top: -19px;
+    left: 50%;
+
+    width: 54px;
+    height: 24px;
+
+    transform: translateX(-50%);
+
+    border: 4px solid var(--accent);
+    border-bottom: none;
+    border-radius: 50px 50px 0 0;
+
+    opacity: 0.5;
+}
+
+/* Metal ring connecting strap to card */
+
+.identity-strap::after {
+    content: "";
+
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+
+    width: 27px;
+    height: 18px;
+
+    transform: translateX(-50%);
+
+    border: 3px solid var(--accent);
+    border-radius: 10px;
+
+    background: var(--bg);
+}
+
+
+/* ========================================
+   3D IDENTITY CARD
+======================================== */
 
 .identity-card {
     width: 100%;
     height: 520px;
 
     perspective: 1200px;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
 }
+
+
+/* Inner card */
 
 .identity-card-inner {
     position: relative;
@@ -44,11 +109,15 @@
         cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Flip animation */
+
 .identity-card-inner.flipped {
     transform: rotateY(180deg);
 }
 
-/* Both sides */
+/* ========================================
+   BOTH CARD SIDES
+======================================== */
 
 .identity-face {
     position: absolute;
@@ -62,11 +131,13 @@
     padding: 28px;
 
     background: var(--bg);
+    color: var(--text);
+
     border: 1px solid var(--line);
     border-radius: 22px;
 
-    box-shadow: 0 18px 50px
-        rgba(30, 25, 60, 0.10);
+    box-shadow:
+        0 18px 50px rgba(30, 25, 60, 0.10);
 
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -74,11 +145,31 @@
     overflow-y: auto;
 }
 
+/* Front */
+
+.identity-front {
+    transform: rotateY(0deg);
+}
+
+/* Back */
+
 .identity-back {
     transform: rotateY(180deg);
 }
 
-/* Header */
+/* Prevent inactive side from receiving clicks */
+
+.identity-card-inner:not(.flipped) .identity-back {
+    pointer-events: none;
+}
+
+.identity-card-inner.flipped .identity-front {
+    pointer-events: none;
+}
+
+/* ========================================
+   CARD HEADER
+======================================== */
 
 .identity-top {
     display: flex;
@@ -90,7 +181,9 @@
     letter-spacing: 1.5px;
 }
 
-/* Content */
+/* ========================================
+   CARD CONTENT
+======================================== */
 
 .identity-content {
     padding: 16px 0;
@@ -107,7 +200,9 @@
     font-size: 13px;
 }
 
-/* Professional facts */
+/* ========================================
+   PROFESSIONAL FACTS
+======================================== */
 
 .identity-facts {
     margin-top: 28px;
@@ -132,6 +227,7 @@
 }
 
 .identity-facts strong {
+    color: var(--text);
     font-size: 16px;
 }
 
@@ -140,7 +236,9 @@
     font-size: 12px;
 }
 
-/* INTEREST BUTTONS */
+/* ========================================
+   INTEREST BUTTONS
+======================================== */
 
 .interest-tabs {
     display: flex;
@@ -154,6 +252,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 6px;
 
     flex: 1 1 90px;
@@ -196,7 +295,9 @@
     border-color: var(--accent);
 }
 
-/* PERSONAL STORY */
+/* ========================================
+   PERSONAL STORY
+======================================== */
 
 .story-label {
     color: var(--accent);
@@ -205,6 +306,7 @@
 }
 
 .interest-story h4 {
+    color: var(--text);
     font-size: 20px;
     margin: 12px 0;
 }
@@ -215,11 +317,15 @@
     line-height: 1.8;
 }
 
-/* Footer */
+/* ========================================
+   CARD FOOTER
+======================================== */
 
 .identity-footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
 
     padding-top: 14px;
 
@@ -230,44 +336,152 @@
     letter-spacing: 1px;
 }
 
-/* Flip button */
+/* ========================================
+   MINIMAL FLIP CARD TEXT
+======================================== */
 
-.identity-flip-button {
-    margin-top: 22px;
-    padding: 12px 22px;
-
-    border: 1px solid var(--line);
-    border-radius: 30px;
+.identity-flip-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     background: transparent;
-    color: var(--text);
+    border: none;
+    padding: 4px 0;
+
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 
     cursor: pointer;
 
-    transition: border-color 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
-.identity-flip-button:hover {
-    border-color: var(--accent);
+.identity-flip-hint:hover {
+    opacity: 0.65;
 }
 
-.identity-flip-button span {
-    margin-right: 8px;
-    color: var(--accent);
-}
+/* Keyboard navigation */
 
-.identity-flip-button:focus-visible,
+.identity-flip-hint:focus-visible,
 .interest-tab:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: 3px;
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
-/* Accessibility */
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
+
+@media (max-width: 500px) {
+
+    .identity-component {
+        max-width: 100%;
+    }
+
+    .identity-card {
+        height: 540px;
+    }
+
+    .identity-face {
+        padding: 22px;
+    }
+
+    .identity-content h3 {
+        font-size: 30px;
+    }
+
+    .identity-facts {
+        gap: 18px;
+    }
+
+    .interest-tab {
+        flex: 1 1 75px;
+        padding: 10px 6px;
+    }
+
+    .interest-tab small {
+        font-size: 10px;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
+    .identity-card,
     .identity-card-inner,
-    .identity-flip-button,
+    .identity-flip-hint,
     .interest-tab {
         transition: none;
+    }
+
+    .identity-card:hover {
+        transform: none;
+    }
+}
+
+
+/* ========================================
+   HANGING CARD ANIMATION
+======================================== */
+
+.identity-component {
+    transform-origin: center top;
+
+    animation: identityHangIn 0.85s ease-out;
+
+    transition: transform 0.45s
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Gentle tilt on hover */
+
+@media (hover: hover) and (pointer: fine) {
+    .identity-component:hover {
+        transform: rotate(1.5deg);
+    }
+}
+
+/* Initial hanging animation */
+
+@keyframes identityHangIn {
+
+    0% {
+        opacity: 0;
+        transform: translateY(-16px) rotate(-4deg);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateY(0) rotate(1.5deg);
+    }
+
+    75% {
+        transform: rotate(-0.7deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .identity-component {
+        animation: none;
+        transition: none;
+    }
+
+    .identity-component:hover {
+        transform: none;
     }
 }

@@ -180,5 +180,5 @@ C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss
 C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Pages\Courses.razor.rz.scp.css
 C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Shared\BeyondTheCode.razor.rz.scp.css
 C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\scopedcss\Components\Shared\IdentityCard.razor.rz.scp.css
-C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\p6z96zx7oa-{0}-pfpg90fgu5-pfpg90fgu5.gz
-C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\o90jt3l2yb-{0}-pfpg90fgu5-pfpg90fgu5.gz
+C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\p6z96zx7oa-{0}-uu2tb7p8o2-uu2tb7p8o2.gz
+C:\Users\greencom\Documents\GitHub\CV-Website-Crazy-\obj\Debug\net10.0\compressed\o90jt3l2yb-{0}-uu2tb7p8o2-uu2tb7p8o2.gz

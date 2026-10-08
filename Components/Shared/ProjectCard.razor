@@ -1,52 +1,87 @@
+
 @using CrazyCV.Models
 
-<article class="project-card" id="@Item.Id">
+<article class="project-card">
 
-    
-<div class="project-cover @Item.Id">
+    <!-- PROJECT IMAGE -->
 
     @if (!string.IsNullOrWhiteSpace(Item.ImagePath))
     {
-        <img src="@Item.ImagePath"
-             alt="Screenshot from @Item.Title"
-             loading="lazy" />
-    }
-    else
-    {
-        <div class="project-cover-placeholder">
-            <span>FEATURED PROJECT</span>
-            <strong>@Item.Title</strong>
-        </div>
-    }
+        <a href="@($"/projects/{Item.Id}")"
+           class="project-image-link"
+           aria-label="@($"View {Item.Title}")">
 
-</div>
+            <img src="@Item.ImagePath"
+                 alt="@($"{Item.Title} project preview")"
+                 class="project-image"
+                 loading="lazy" />
 
-
-    <h3>@Item.Title</h3>
-
-    <p>@Item.Description</p>
-
-    <div class="tech-tags">
-        @foreach (var technology in Item.Technologies)
-        {
-            <span class="tech-tag">@technology</span>
-        }
-    </div>
-
-    <a class="details-link" href="@($"/projects/{Item.Id}")">
-        View project details ↗
-    </a>
-
-    @if (!string.IsNullOrWhiteSpace(Item.GitHubUrl))
-    {
-        <a href="@Item.GitHubUrl" target="_blank" rel="noopener noreferrer">
-            View on GitHub ↗
         </a>
     }
+
+    <!-- PROJECT CONTENT -->
+
+    <div class="project-content">
+
+        <span class="project-label">
+            SELECTED PROJECT
+        </span>
+
+        <h3>@Item.Title</h3>
+
+        <p class="project-description">
+            @Item.Description
+        </p>
+
+        <!-- TECHNOLOGIES -->
+
+        <div class="project-technologies">
+
+            @foreach (var technology in Item.Technologies)
+            {
+                <span class="project-tech"
+                      @key="technology">
+                    @technology
+                </span>
+            }
+
+        </div>
+
+        <!-- PROJECT LINKS -->
+
+        <div class="project-links">
+
+            <a href="@($"/projects/{Item.Id}")"
+               class="project-details-link">
+
+                Explore project ↗
+
+            </a>
+
+            @if (!string.IsNullOrWhiteSpace(Item.GitHubUrl))
+            {
+                <a href="@Item.GitHubUrl"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="project-github-link">
+
+                    GitHub ↗
+
+                </a>
+            }
+
+        </div>
+
+    </div>
 
 </article>
 
 @code {
+
+    // Project passed from Home.razor
+
     [Parameter]
     public Project Item { get; set; } = default!;
+
 }
+y
