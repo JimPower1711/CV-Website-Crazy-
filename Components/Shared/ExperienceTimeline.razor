@@ -3,15 +3,18 @@
 
 <section class="experience" id="experience">
 
-    <div class="journey-header">
-        <div>
-            <p class="section-label">03 / MY JOURNEY</p>
-            <h2>Experience & Education.</h2>
+    <div class="journey-header @(Embedded ? "embedded" : null)">
+        @if (!Embedded)
+        {
+            <div>
+                <p class="section-label">03 / MY JOURNEY</p>
+                <h2>Experience & Education.</h2>
 
-            <p class="journey-intro">
-                Explore the experiences that shaped me.
-            </p>
-        </div>
+                <p class="journey-intro">
+                    Explore the experiences that shaped me.
+                </p>
+            </div>
+        }
 
         <!-- EXPERIENCE / EDUCATION BUTTONS -->
 
@@ -119,6 +122,9 @@
 </section>
 
 @code {
+    [Parameter]
+    public bool Embedded { get; set; }
+
 
     // =========================
     // COMPONENT STATE

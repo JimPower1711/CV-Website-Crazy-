@@ -1,0 +1,160 @@
+@using CrazyCV.Models
+@using CrazyCV.Services
+
+@inject ProjectService ProjectService
+
+<section class="portfolio-explorer"
+         id="portfolio-explorer"
+         aria-labelledby="portfolio-explorer-title"
+         aria-live="polite">
+    <div class="explorer-shell">
+        <header class="explorer-header">
+            <div>
+                <p class="explorer-index">@ActiveDetails.Number / Selected chapter</p>
+                <h2 id="portfolio-explorer-title">@ActiveDetails.Title</h2>
+            </div>
+
+            <p class="explorer-introduction">@ActiveDetails.Introduction</p>
+        </header>
+
+        <nav class="explorer-navigation" aria-label="Portfolio chapters">
+            @foreach (var section in Sections)
+            {
+                <a href="@GetSectionUrl(section.Id)"
+                   class="@(section.Id == ActiveSection ? "active" : null)"
+                   aria-current="@(section.Id == ActiveSection ? "page" : null)">
+                    <span>@section.Number</span>
+                    @section.ShortTitle
+                </a>
+            }
+        </nav>
+
+        <div class="explorer-content">
+            @switch (ActiveSection)
+            {
+                case PortfolioSection.Projects:
+                    <div class="explorer-project-grid">
+                        @foreach (var projectItem in ProjectService.GetAll())
+                        {
+                            <ProjectCard Item="@projectItem" @key="projectItem.Id" />
+                        }
+                    </div>
+                    break;
+
+                case PortfolioSection.Skills:
+                    <PeriodicTable Embedded="true" />
+                    break;
+
+                case PortfolioSection.Experience:
+                    <ExperienceTimeline Embedded="true" />
+                    break;
+
+                case PortfolioSection.Beyond:
+                    <BeyondTheCode Embedded="true" />
+                    break;
+
+                case PortfolioSection.Contact:
+                    <div class="contact-layout">
+                        <div class="contact-statement">
+                            <span>Open channel / GitHub</span>
+                            <h3>Let's build something worth exploring.</h3>
+                            <p>
+                                GitHub is currently the verified public contact channel.
+                                Email and LinkedIn will be connected when the final profile
+                                information is confirmed.
+                            </p>
+                        </div>
+
+                        <div class="contact-directory" aria-label="Contact channels">
+                            <a href="https://github.com/JimPower1711"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <span><small>01</small><strong>GitHub profile</strong></span>
+                                <span aria-hidden="true">↗</span>
+                            </a>
+
+                            <a href="https://github.com/JimPower1711/CV-Website-Crazy-"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <span><small>02</small><strong>Crazy CV repository</strong></span>
+                                <span aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="contact-pending">
+                                <span><small>03</small><strong>LinkedIn</strong></span>
+                                <em>Not published yet</em>
+                            </div>
+
+                            <div class="contact-pending">
+                                <span><small>04</small><strong>Email</strong></span>
+                                <em>Not published yet</em>
+                            </div>
+                        </div>
+                    </div>
+                    break;
+
+                default:
+                    <div class="about-layout">
+                        <div class="about-narrative">
+                            <span>Profile / OsloMet 2027</span>
+                            <h3>Curious by default. Deliberate in execution.</h3>
+                            <p>
+                                I study Information Technology at OsloMet and use software
+                                projects to turn ideas into practical experiences. My focus
+                                is C#, .NET, problem solving and continuously expanding how
+                                I think about technology.
+                            </p>
+
+                            <dl>
+                                <div>
+                                    <dt>Current role</dt>
+                                    <dd>Information Technology student</dd>
+                                </div>
+                                <div>
+                                    <dt>Foundation</dt>
+                                    <dd>C# · .NET · Python · Java</dd>
+                                </div>
+                                <div>
+                                    <dt>Graduating</dt>
+                                    <dd>2027</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <div class="about-identity">
+                            <IdentityCard />
+                        </div>
+                    </div>
+                    break;
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter]
+    public PortfolioSection ActiveSection { get; set; } = PortfolioSection.About;
+
+    private static readonly SectionLink[] Sections =
+    {
+        new(PortfolioSection.About, "01", "About", "About", "The person behind the work, presented through the existing digital identity card."),
+        new(PortfolioSection.Projects, "02", "Projects", "Selected projects", "A focused selection of software projects, technical challenges and lessons learned."),
+        new(PortfolioSection.Skills, "03", "Skills", "Skills & technology", "An interactive overview of the languages, frameworks and tools currently in use."),
+        new(PortfolioSection.Experience, "04", "Journey", "Experience & education", "The work, education and milestones shaping my development as an IT professional."),
+        new(PortfolioSection.Beyond, "05", "Beyond", "Beyond the Code", "Training, gaming and the interests that influence how I learn, create and solve problems."),
+        new(PortfolioSection.Contact, "06", "Contact", "Contact", "Verified channels for following the work and starting a conversation.")
+    };
+
+    private SectionLink ActiveDetails =>
+        Sections.First(section => section.Id == ActiveSection);
+
+    private static string GetSectionUrl(PortfolioSection section) =>
+        $"/?section={section.ToSlug()}#portfolio-explorer";
+
+    private sealed record SectionLink(
+        PortfolioSection Id,
+        string Number,
+        string ShortTitle,
+        string Title,
+        string Introduction);
+}

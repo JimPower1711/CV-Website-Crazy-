@@ -4,8 +4,11 @@
 
 <section class="skills" id="skills">
 
-    <p class="skills-label">01 / TECH STACK</p>
-    <h2>The periodic table of my stack.</h2>
+    @if (!Embedded)
+    {
+        <p class="skills-label">01 / TECH STACK</p>
+        <h2>The periodic table of my stack.</h2>
+    }
 
 
     <div class="category-filters">
@@ -51,7 +54,7 @@
 
             @if (selectedSkill.ProjectId != null)
             {
-                <a class="skill-project-link" href="@($"#{selectedSkill.ProjectId}")">
+                <a class="skill-project-link" href="@($"/?section=projects#project-{selectedSkill.ProjectId}")">
 
                     <span>
                         Used in: @selectedSkill.ProjectName
@@ -69,6 +72,9 @@
 </section>
 
 @code {
+    [Parameter]
+    public bool Embedded { get; set; }
+
     
     private readonly List<Skill> skills = new()
 {

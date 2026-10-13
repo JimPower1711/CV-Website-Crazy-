@@ -1,0 +1,1211 @@
+.identity-key-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: calc(100svh - 90px);
+    overflow: hidden;
+    padding: 16px clamp(24px, 5vw, 84px) 28px;
+    background:
+        radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--surface-highlight) 42%, transparent) 0, transparent 18%),
+        radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--key-glow) 34%, transparent) 0, transparent 37%),
+        radial-gradient(ellipse at 50% 84%, color-mix(in srgb, var(--key-glow) 20%, transparent) 0, transparent 38%),
+        radial-gradient(circle at 12% 40%, color-mix(in srgb, var(--surface-highlight) 70%, transparent) 0, transparent 31%),
+        linear-gradient(120deg, var(--bg) 0%, var(--hero-bg) 55%, var(--bg) 100%);
+}
+
+.identity-key-hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: -12%;
+    bottom: -13%;
+    left: -12%;
+    height: 40%;
+    background:
+        linear-gradient(to bottom, transparent 0, color-mix(in srgb, var(--surface-highlight) 72%, transparent) 39%, transparent 43%),
+        radial-gradient(ellipse at 50% 35%, color-mix(in srgb, var(--artifact-shadow) 28%, transparent) 0, transparent 58%);
+    filter: blur(10px);
+}
+
+.identity-key-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 14%;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--key-line), transparent);
+    box-shadow:
+        0 13px 30px color-mix(in srgb, var(--artifact-shadow) 18%, transparent),
+        0 -10px 35px color-mix(in srgb, var(--surface-highlight) 26%, transparent);
+}
+
+.identity-intro {
+    position: relative;
+    z-index: 4;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.identity-name,
+.identity-role,
+.identity-intro h1 {
+    margin: 0;
+}
+
+.identity-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(18px, 1.55vw, 27px);
+    letter-spacing: clamp(5px, 0.9vw, 14px);
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.identity-role {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: clamp(9px, 0.82vw, 13px);
+    font-weight: 500;
+    letter-spacing: clamp(3px, 0.55vw, 8px);
+    text-transform: uppercase;
+}
+
+.identity-role span {
+    margin: 0 6px;
+    color: var(--key-accent);
+}
+
+.identity-divider {
+    display: block;
+    width: 32px;
+    height: 1px;
+    margin: 20px auto 16px;
+    background: var(--line-strong);
+}
+
+.identity-intro h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(21px, 1.65vw, 30px);
+    font-weight: 400;
+    letter-spacing: clamp(2px, 0.3vw, 5px);
+}
+
+.identity-stage {
+    position: relative;
+    width: min(1280px, 100%);
+    height: clamp(540px, 64vh, 680px);
+    margin: -8px auto 0;
+}
+
+.artifact-halo {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    width: clamp(470px, 53vw, 760px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, color-mix(in srgb, var(--surface-highlight) 72%, transparent) 0, transparent 28%),
+        radial-gradient(circle, color-mix(in srgb, var(--key-glow) 30%, transparent) 0, transparent 61%);
+    filter: blur(7px);
+    opacity: 0.88;
+    transform: translate(-50%, -48%);
+    animation: haloBreathe 6.8s ease-in-out infinite;
+}
+
+.orbit {
+    --orbit-y: -48%;
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    border: 1px solid var(--key-line);
+    border-radius: 50%;
+    transform: translate(-50%, var(--orbit-y));
+    will-change: transform;
+}
+
+.orbit::before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 12%;
+    width: 5px;
+    height: 5px;
+    border: 1px solid color-mix(in srgb, var(--surface-highlight) 80%, transparent);
+    border-radius: 50%;
+    background: var(--key-accent);
+    box-shadow:
+        0 0 8px var(--key-accent),
+        0 0 20px color-mix(in srgb, var(--key-accent) 52%, transparent);
+}
+
+.orbit::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-top: 1px solid color-mix(in srgb, var(--key-accent) 58%, transparent);
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid color-mix(in srgb, var(--surface-highlight) 32%, transparent);
+    border-left: 1px solid transparent;
+    border-radius: 50%;
+}
+
+.orbit-outer {
+    width: clamp(470px, 48vw, 690px);
+    aspect-ratio: 1;
+    animation: orbitClockwise 42s linear infinite;
+}
+
+.orbit-middle {
+    width: clamp(410px, 42vw, 605px);
+    aspect-ratio: 1;
+    border-style: dashed;
+    border-color: color-mix(in srgb, var(--key-line) 70%, transparent);
+    animation: orbitCounterClockwise 52s linear infinite;
+}
+
+.orbit-inner {
+    width: clamp(360px, 37vw, 535px);
+    aspect-ratio: 1;
+    border-color: color-mix(in srgb, var(--key-line) 72%, transparent);
+    animation: orbitClockwise 31s linear infinite;
+}
+
+.energy-arc {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.energy-arc-one {
+    width: clamp(435px, 45vw, 650px);
+    border-top: 1px solid color-mix(in srgb, var(--key-accent) 62%, transparent);
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid color-mix(in srgb, var(--surface-highlight) 24%, transparent);
+    box-shadow: inset 0 0 24px color-mix(in srgb, var(--key-accent) 7%, transparent);
+    animation: energyArcClockwise 28s linear infinite;
+}
+
+.energy-arc-two {
+    width: clamp(390px, 40vw, 575px);
+    border-top: 1px solid transparent;
+    border-right: 1px solid color-mix(in srgb, var(--key-accent) 38%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--surface-highlight) 34%, transparent);
+    border-left: 1px solid transparent;
+    animation: energyArcCounterClockwise 35s linear infinite;
+}
+
+.orbit-detail {
+    position: absolute;
+    z-index: 1;
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--key-accent);
+    border-radius: 50%;
+    background: var(--bg);
+    box-shadow: 0 0 15px color-mix(in srgb, var(--key-accent) 70%, transparent);
+    animation: nodePulse 4.6s ease-in-out infinite;
+}
+
+.orbit-detail-one {
+    top: 19%;
+    left: 31%;
+}
+
+.orbit-detail-two {
+    right: 31%;
+    bottom: 16%;
+    animation-delay: -1.4s;
+}
+
+.orbit-detail-three {
+    top: 26%;
+    right: 33%;
+    width: 4px;
+    height: 4px;
+    animation-delay: -2.6s;
+}
+
+.orbit-detail-four {
+    bottom: 24%;
+    left: 32%;
+    width: 4px;
+    height: 4px;
+    animation-delay: -3.5s;
+}
+
+.artifact-ground-shadow {
+    position: absolute;
+    z-index: 0;
+    top: 90%;
+    left: 50%;
+    width: clamp(350px, 43vw, 620px);
+    height: clamp(62px, 7vw, 96px);
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse, color-mix(in srgb, var(--artifact-shadow) 34%, transparent) 0, transparent 63%),
+        radial-gradient(ellipse, color-mix(in srgb, var(--key-accent) 30%, transparent) 0, transparent 68%);
+    filter: blur(10px);
+    opacity: 0.72;
+    transform: translate(-50%, -50%) scaleX(1);
+    animation: shadowBreathe 7.2s ease-in-out infinite;
+}
+
+.artifact-ground-shadow span {
+    position: absolute;
+    inset: 18% 5%;
+    border: 1px solid color-mix(in srgb, var(--key-accent) 42%, transparent);
+    border-radius: 50%;
+    box-shadow:
+        0 0 18px color-mix(in srgb, var(--key-accent) 20%, transparent),
+        inset 0 0 16px color-mix(in srgb, var(--surface-highlight) 18%, transparent);
+}
+
+.identity-artifact {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: clamp(355px, 36vw, 540px);
+    aspect-ratio: 1.03;
+    perspective: 1100px;
+    transform: translate(-50%, -48%);
+    filter:
+        drop-shadow(0 38px 26px color-mix(in srgb, var(--artifact-shadow) 44%, transparent))
+        drop-shadow(8px 7px 9px color-mix(in srgb, var(--key-accent) 42%, transparent))
+        drop-shadow(-7px -5px 10px color-mix(in srgb, var(--surface-highlight) 36%, transparent));
+}
+
+.artifact-motion {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+    animation: artifactFloat 7.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.artifact-depth,
+.artifact-rim,
+.artifact-face {
+    position: absolute;
+    clip-path: polygon(38% 1%, 76% 8%, 98% 35%, 94% 73%, 65% 96%, 28% 94%, 4% 70%, 1% 34%);
+}
+
+.artifact-depth {
+    inset: 1px;
+    background:
+        linear-gradient(165deg, rgba(255, 255, 255, 0.45) 0, transparent 17%),
+        linear-gradient(145deg, #838b90 0%, #252a2e 52%, #9ba3a8 78%, #30363a 100%);
+    box-shadow: inset -22px -17px 28px rgba(8, 11, 13, 0.68);
+    transform: translate3d(0, 25px, -10px) scale(0.995);
+}
+
+.artifact-rim {
+    inset: 0;
+    background:
+        linear-gradient(120deg, #f4f6f5 0%, #8c9499 20%, #343a3e 52%, #d6dcde 72%, #586167 100%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+        0 0 15px color-mix(in srgb, var(--key-accent) 28%, transparent);
+    transform: translate3d(0, 4px, 5px) scale(1.006);
+}
+
+.artifact-face {
+    inset: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    background:
+        radial-gradient(circle at 27% 36%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.42) 11%, transparent 31%),
+        linear-gradient(112deg, transparent 12%, rgba(255, 255, 255, 0.18) 31%, transparent 49%),
+        repeating-linear-gradient(103deg, rgba(255, 255, 255, 0.105) 0 1px, rgba(24, 31, 35, 0.075) 1px 3px),
+        repeating-linear-gradient(12deg, transparent 0 8px, rgba(255, 255, 255, 0.025) 8px 9px),
+        linear-gradient(138deg, #697176 0%, #e0e2e1 20%, #8f9699 43%, #c8cccb 64%, #565e63 100%);
+    box-shadow:
+        inset -34px -38px 62px rgba(16, 22, 26, 0.5),
+        inset 30px 24px 48px rgba(255, 255, 255, 0.38),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+    transform: translateZ(16px);
+}
+
+.artifact-face::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 4px;
+    clip-path: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.08);
+}
+
+.artifact-face::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    right: 4.7%;
+    bottom: 14%;
+    width: 3px;
+    height: 50%;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, transparent, #e6faff 18%, var(--key-accent) 62%, transparent);
+    box-shadow:
+        0 0 10px 2px var(--key-accent),
+        0 0 25px 5px color-mix(in srgb, var(--key-accent) 42%, transparent);
+    transform: rotate(8deg);
+}
+
+.artifact-reflection {
+    position: absolute;
+    z-index: 1;
+    top: -45%;
+    bottom: -45%;
+    left: -72%;
+    width: 56%;
+    background: linear-gradient(100deg, transparent 0, rgba(255, 255, 255, 0.04) 31%, rgba(255, 255, 255, 0.58) 50%, rgba(255, 255, 255, 0.06) 68%, transparent 100%);
+    filter: blur(8px);
+    mix-blend-mode: screen;
+    transform: translateX(0) rotate(9deg);
+    will-change: transform, opacity;
+    animation: reflectionSweep 9.5s ease-in-out infinite;
+}
+
+.artifact-glyph {
+    position: absolute;
+    z-index: 2;
+    color: rgba(43, 52, 57, 0.9);
+    opacity: 0.9;
+    filter:
+        drop-shadow(-1px -1px 0 rgba(255, 255, 255, 0.42))
+        drop-shadow(1px 2px 1px rgba(17, 24, 28, 0.72));
+    transition:
+        color 0.24s ease,
+        filter 0.24s ease,
+        opacity 0.24s ease;
+}
+
+.artifact-glyph svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.15;
+}
+
+.artifact-glyph-one {
+    top: 16%;
+    left: 29%;
+    width: 14%;
+    transform: rotate(-4deg);
+}
+
+.artifact-glyph-two {
+    top: 16%;
+    right: 28%;
+    width: 14%;
+    transform: rotate(7deg);
+}
+
+.artifact-glyph-three {
+    bottom: 16%;
+    left: 29%;
+    width: 14%;
+    transform: rotate(5deg);
+}
+
+.artifact-glyph-skills {
+    top: 42%;
+    left: 17%;
+    width: 14%;
+    transform: rotate(-7deg);
+}
+
+.artifact-glyph-experience {
+    top: 42%;
+    right: 16%;
+    width: 14%;
+    transform: rotate(6deg);
+}
+
+.artifact-glyph-contact {
+    right: 27%;
+    bottom: 16%;
+    width: 14%;
+    transform: rotate(-3deg);
+}
+
+.artifact-glyph .glyph-dot {
+    fill: currentColor;
+    stroke: none;
+}
+
+.artifact-glyph .glyph-ring {
+    fill: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.symbol-connections {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.symbol-connection {
+    fill: none;
+    stroke: color-mix(in srgb, var(--key-line-strong) 75%, transparent);
+    stroke-opacity: 0.68;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transition:
+        stroke 0.24s ease,
+        stroke-width 0.24s ease,
+        filter 0.24s ease,
+        opacity 0.24s ease;
+}
+
+.symbol-anchor {
+    fill: var(--key-accent);
+    stroke: color-mix(in srgb, var(--surface-highlight) 85%, transparent);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 4px color-mix(in srgb, var(--key-accent) 65%, transparent));
+    transition:
+        fill 0.24s ease,
+        filter 0.24s ease;
+}
+
+.identity-stage:has(.point-about .point-link:is(:hover, :focus-visible)) .artifact-symbol-about,
+.identity-stage:has(.point-projects .point-link:is(:hover, :focus-visible)) .artifact-symbol-projects,
+.identity-stage:has(.point-skills .point-link:is(:hover, :focus-visible)) .artifact-symbol-skills,
+.identity-stage:has(.point-journey .point-link:is(:hover, :focus-visible)) .artifact-symbol-experience,
+.identity-stage:has(.point-beyond .point-link:is(:hover, :focus-visible)) .artifact-symbol-beyond,
+.identity-stage:has(.point-contact .point-link:is(:hover, :focus-visible)) .artifact-symbol-contact {
+    color: #e4f9ff;
+    opacity: 1;
+    filter:
+        drop-shadow(1px 2px 1px rgba(15, 35, 43, 0.78))
+        drop-shadow(0 0 4px #ffffff)
+        drop-shadow(0 0 8px var(--key-accent))
+        drop-shadow(0 0 18px color-mix(in srgb, var(--key-accent) 88%, transparent));
+}
+
+.identity-stage:has(.point-about .point-link:is(:hover, :focus-visible)) .symbol-connection-about,
+.identity-stage:has(.point-projects .point-link:is(:hover, :focus-visible)) .symbol-connection-projects,
+.identity-stage:has(.point-skills .point-link:is(:hover, :focus-visible)) .symbol-connection-skills,
+.identity-stage:has(.point-journey .point-link:is(:hover, :focus-visible)) .symbol-connection-experience,
+.identity-stage:has(.point-beyond .point-link:is(:hover, :focus-visible)) .symbol-connection-beyond,
+.identity-stage:has(.point-contact .point-link:is(:hover, :focus-visible)) .symbol-connection-contact {
+    stroke: #bfefff;
+    stroke-opacity: 1;
+    stroke-width: 1.5;
+    filter:
+        drop-shadow(0 0 3px #ffffff)
+        drop-shadow(0 0 8px var(--key-accent));
+}
+
+.identity-stage:has(.point-about .point-link:is(:hover, :focus-visible)) .symbol-anchor-about,
+.identity-stage:has(.point-projects .point-link:is(:hover, :focus-visible)) .symbol-anchor-projects,
+.identity-stage:has(.point-skills .point-link:is(:hover, :focus-visible)) .symbol-anchor-skills,
+.identity-stage:has(.point-journey .point-link:is(:hover, :focus-visible)) .symbol-anchor-experience,
+.identity-stage:has(.point-beyond .point-link:is(:hover, :focus-visible)) .symbol-anchor-beyond,
+.identity-stage:has(.point-contact .point-link:is(:hover, :focus-visible)) .symbol-anchor-contact {
+    fill: #ffffff;
+    filter:
+        drop-shadow(0 0 4px #ffffff)
+        drop-shadow(0 0 9px var(--key-accent));
+}
+
+@media (hover: none) {
+    .identity-stage:has(.point-about.is-active) .artifact-symbol-about,
+    .identity-stage:has(.point-projects.is-active) .artifact-symbol-projects,
+    .identity-stage:has(.point-skills.is-active) .artifact-symbol-skills,
+    .identity-stage:has(.point-journey.is-active) .artifact-symbol-experience,
+    .identity-stage:has(.point-beyond.is-active) .artifact-symbol-beyond,
+    .identity-stage:has(.point-contact.is-active) .artifact-symbol-contact {
+        color: #e4f9ff;
+        opacity: 1;
+        filter:
+            drop-shadow(1px 2px 1px rgba(15, 35, 43, 0.78))
+            drop-shadow(0 0 4px #ffffff)
+            drop-shadow(0 0 8px var(--key-accent))
+            drop-shadow(0 0 18px color-mix(in srgb, var(--key-accent) 88%, transparent));
+    }
+}
+
+@keyframes artifactFloat {
+    0%,
+    100% {
+        transform: translate3d(0, 6px, 0) rotateZ(-7deg) rotateX(1.8deg) rotateY(-1.5deg);
+    }
+
+    50% {
+        transform: translate3d(0, -12px, 14px) rotateZ(-5.8deg) rotateX(-1deg) rotateY(1.8deg);
+    }
+}
+
+@keyframes haloBreathe {
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: translate(-50%, -48%) scale(0.96);
+    }
+
+    50% {
+        opacity: 0.98;
+        transform: translate(-50%, -48%) scale(1.04);
+    }
+}
+
+@keyframes shadowBreathe {
+    0%,
+    100% {
+        opacity: 0.78;
+        transform: translate(-50%, -50%) scaleX(1.03) scaleY(0.9);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: translate(-50%, -50%) scaleX(0.9) scaleY(0.76);
+    }
+}
+
+@keyframes orbitClockwise {
+    from {
+        transform: translate(-50%, var(--orbit-y)) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, var(--orbit-y)) rotate(360deg);
+    }
+}
+
+@keyframes orbitCounterClockwise {
+    from {
+        transform: translate(-50%, var(--orbit-y)) rotate(360deg);
+    }
+
+    to {
+        transform: translate(-50%, var(--orbit-y)) rotate(0deg);
+    }
+}
+
+@keyframes energyArcClockwise {
+    from {
+        opacity: 0.36;
+        transform: translate(-50%, -48%) rotate(15deg);
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    to {
+        opacity: 0.36;
+        transform: translate(-50%, -48%) rotate(375deg);
+    }
+}
+
+@keyframes energyArcCounterClockwise {
+    from {
+        opacity: 0.7;
+        transform: translate(-50%, -48%) rotate(330deg);
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0.7;
+        transform: translate(-50%, -48%) rotate(-30deg);
+    }
+}
+
+@keyframes reflectionSweep {
+    0%,
+    16% {
+        opacity: 0;
+        transform: translateX(0) rotate(9deg);
+    }
+
+    36%,
+    58% {
+        opacity: 0.62;
+    }
+
+    76%,
+    100% {
+        opacity: 0;
+        transform: translateX(390%) rotate(9deg);
+    }
+}
+
+@keyframes nodePulse {
+    0%,
+    100% {
+        opacity: 0.56;
+        transform: scale(0.84);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.22);
+    }
+}
+
+.identity-icon-definitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.identity-map {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.identity-point {
+    --connector-width: clamp(48px, 6vw, 88px);
+    position: absolute;
+    width: clamp(205px, 18vw, 275px);
+}
+
+.point-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.point-link:hover .point-icon,
+.identity-point.is-active .point-icon {
+    border-color: var(--key-accent);
+    background: color-mix(in srgb, var(--key-accent) 10%, var(--bg));
+    box-shadow: 0 0 22px color-mix(in srgb, var(--key-accent) 24%, transparent);
+}
+
+.point-link:hover .point-copy strong,
+.identity-point.is-active .point-copy strong {
+    color: var(--accent);
+}
+
+.point-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+}
+
+.point-icon {
+    display: grid;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bg) 83%, transparent);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--artifact-shadow) 9%, transparent);
+}
+
+.point-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25;
+}
+
+.point-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.point-copy strong {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(18px, 1.35vw, 23px);
+    font-weight: 400;
+    line-height: 1.12;
+}
+
+.point-copy small {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+
+.point-connector {
+    position: absolute;
+    top: 50%;
+    width: var(--connector-width);
+    height: 1px;
+    background: var(--key-line-strong);
+}
+
+.point-connector::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--key-accent);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--key-accent) 75%, transparent);
+}
+
+.is-left .point-connector {
+    left: calc(100% + 5px);
+}
+
+.is-left .point-connector::after {
+    left: -2px;
+}
+
+.is-right .point-connector {
+    right: calc(100% + 5px);
+}
+
+.is-right .point-connector::after {
+    right: -2px;
+}
+
+.point-about {
+    top: 14%;
+    left: 5%;
+}
+
+.point-skills {
+    top: 46%;
+    left: 0;
+}
+
+.point-beyond {
+    bottom: 9%;
+    left: 3%;
+}
+
+.point-projects {
+    top: 17%;
+    right: 3%;
+}
+
+.point-journey {
+    top: 49%;
+    right: -2%;
+}
+
+.point-contact {
+    right: 4%;
+    bottom: 8%;
+}
+
+.artifact-status {
+    position: absolute;
+    z-index: 3;
+    bottom: 1%;
+    left: 50%;
+    margin: 0;
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.artifact-status span {
+    margin: 0 7px;
+    color: var(--key-accent);
+}
+
+.identity-footer {
+    position: absolute;
+    right: clamp(24px, 5vw, 84px);
+    bottom: 24px;
+    left: clamp(24px, 5vw, 84px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.identity-footer b {
+    margin: 0 10px;
+    color: var(--line-strong);
+    font-weight: 400;
+}
+
+.scroll-cue {
+    display: flex;
+    align-items: flex-end;
+    gap: 22px;
+}
+
+.scroll-cue i {
+    position: relative;
+    display: block;
+    width: 1px;
+    height: 42px;
+    background: var(--line-strong);
+}
+
+.scroll-cue i::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--text);
+}
+
+@media (max-width: 1080px) {
+    .identity-stage {
+        height: clamp(500px, 61vh, 620px);
+    }
+
+    .identity-point {
+        width: 205px;
+    }
+
+    .point-about,
+    .point-skills,
+    .point-beyond {
+        left: 0;
+    }
+
+    .point-projects,
+    .point-journey,
+    .point-contact {
+        right: 0;
+    }
+
+    .point-connector {
+        display: none;
+    }
+
+    .symbol-connections {
+        display: none;
+    }
+}
+
+@media (max-width: 880px) {
+    .identity-key-hero {
+        min-height: auto;
+        padding: 26px 5% 70px;
+    }
+
+    .identity-name {
+        line-height: 1.45;
+    }
+
+    .identity-stage {
+        height: auto;
+        margin-top: 18px;
+        padding-top: 390px;
+    }
+
+    .orbit {
+        --orbit-y: -50%;
+        top: 174px;
+    }
+
+    .orbit-outer {
+        width: 350px;
+    }
+
+    .orbit-middle {
+        width: 310px;
+    }
+
+    .orbit-inner {
+        width: 274px;
+    }
+
+    .artifact-halo,
+    .energy-arc {
+        top: 174px;
+    }
+
+    .artifact-halo {
+        width: 390px;
+        transform: translate(-50%, -50%);
+    }
+
+    .energy-arc-one {
+        width: 332px;
+    }
+
+    .energy-arc-two {
+        width: 292px;
+    }
+
+    .orbit-detail-one {
+        top: 42px;
+        left: calc(50% - 145px);
+    }
+
+    .orbit-detail-two {
+        right: calc(50% - 144px);
+        bottom: auto;
+        top: 296px;
+    }
+
+    .orbit-detail-three {
+        top: 69px;
+        right: calc(50% - 139px);
+    }
+
+    .orbit-detail-four {
+        bottom: auto;
+        top: 276px;
+        left: calc(50% - 139px);
+    }
+
+    .artifact-ground-shadow {
+        top: 320px;
+        width: 330px;
+        height: 62px;
+    }
+
+    .identity-artifact {
+        top: 169px;
+        width: min(72vw, 290px);
+        transform: translate(-50%, -50%);
+    }
+
+    .identity-map {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .identity-point {
+        position: relative;
+        inset: auto;
+        width: auto;
+        border: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 76%, transparent);
+    }
+
+    .point-link {
+        min-height: 82px;
+        padding: 13px;
+        gap: 12px;
+    }
+
+    .point-icon {
+        flex-basis: 42px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .point-copy strong {
+        font-size: 17px;
+    }
+
+    .point-copy small {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .artifact-status {
+        top: 343px;
+        bottom: auto;
+    }
+
+    .identity-footer {
+        right: 5%;
+        bottom: 22px;
+        left: 5%;
+        justify-content: center;
+    }
+
+    .identity-footer > :last-child {
+        display: none;
+    }
+
+    .scroll-cue i {
+        height: 28px;
+    }
+}
+
+@media (max-width: 520px) {
+    .identity-key-hero {
+        padding-top: 18px;
+    }
+
+    .identity-role {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        line-height: 1.7;
+    }
+
+    .identity-role span {
+        margin: 0 2px;
+    }
+
+    .identity-stage {
+        padding-top: 375px;
+    }
+
+    .orbit,
+    .artifact-halo,
+    .energy-arc {
+        top: 164px;
+    }
+
+    .orbit-outer {
+        width: 330px;
+    }
+
+    .orbit-middle {
+        width: 292px;
+    }
+
+    .orbit-inner {
+        width: 258px;
+    }
+
+    .artifact-halo {
+        width: 355px;
+    }
+
+    .energy-arc-one {
+        width: 314px;
+    }
+
+    .energy-arc-two {
+        width: 278px;
+    }
+
+    .identity-artifact {
+        top: 160px;
+        width: min(74vw, 285px);
+    }
+
+    .artifact-ground-shadow {
+        top: 303px;
+        width: 300px;
+    }
+
+    .artifact-status {
+        top: 326px;
+    }
+
+    .orbit-detail-one {
+        top: 37px;
+        left: calc(50% - 136px);
+    }
+
+    .orbit-detail-two {
+        top: 275px;
+        right: calc(50% - 135px);
+    }
+
+    .orbit-detail-three {
+        top: 62px;
+        right: calc(50% - 131px);
+    }
+
+    .orbit-detail-four {
+        top: 258px;
+        left: calc(50% - 131px);
+    }
+
+    .identity-map {
+        grid-template-columns: 1fr;
+    }
+
+    .identity-point {
+        min-height: 0;
+    }
+
+    .point-link {
+        min-height: 70px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .artifact-halo,
+    .orbit,
+    .energy-arc,
+    .orbit-detail,
+    .artifact-ground-shadow,
+    .artifact-motion,
+    .artifact-reflection,
+    .artifact-glyph,
+    .symbol-connection,
+    .symbol-anchor {
+        animation: none;
+    }
+
+    .artifact-motion {
+        transform: rotateZ(-7deg) rotateX(1deg);
+    }
+
+    .orbit {
+        transform: translate(-50%, var(--orbit-y));
+    }
+
+    .energy-arc-one {
+        opacity: 0.54;
+        transform: translate(-50%, -48%) rotate(15deg);
+    }
+
+    .energy-arc-two {
+        opacity: 0.45;
+        transform: translate(-50%, -48%) rotate(-30deg);
+    }
+
+    .artifact-reflection {
+        display: none;
+    }
+
+    .artifact-glyph {
+        transition: none;
+    }
+
+    .symbol-connection {
+        transition: none;
+    }
+
+    .symbol-anchor {
+        transition: none;
+    }
+}

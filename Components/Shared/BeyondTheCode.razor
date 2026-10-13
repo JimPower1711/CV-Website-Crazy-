@@ -1,13 +1,16 @@
 
 <section class="beyond" id="beyond">
 
-    <p class="section-label">05 / BEYOND THE CODE</p>
+    @if (!Embedded)
+    {
+        <p class="section-label">05 / BEYOND THE CODE</p>
 
-    <h2>There's more to my story.</h2>
+        <h2>There's more to my story.</h2>
 
-    <p class="beyond-intro">
-        A few things that inspire me outside of technology.
-    </p>
+        <p class="beyond-intro">
+            A few things that inspire me outside of technology.
+        </p>
+    }
 
     <div class="interest-grid">
 
@@ -56,6 +59,9 @@
 </section>
 
 @code {
+    [Parameter]
+    public bool Embedded { get; set; }
+
 
     private record Interest(
         string Id,
